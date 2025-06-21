@@ -31,8 +31,6 @@ component lpm_rom
     );
 end component;
 
-component lpm_ram_dq
-
 
 component lpm_ram_dq
     generic (
