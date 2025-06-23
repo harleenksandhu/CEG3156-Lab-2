@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Lab2
-Thu Jun 19 17:14:46 2025
+Mon Jun 23 15:21:27 2025
 Quartus II 64-Bit Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
 
 
@@ -36,10 +36,10 @@ applicable agreement for further details.
 +--------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                         ;
 +------------------------------------+-------------------------------------------------+
-; Analysis & Synthesis Status        ; Failed - Thu Jun 19 17:14:46 2025               ;
+; Analysis & Synthesis Status        ; Failed - Mon Jun 23 15:21:25 2025               ;
 ; Quartus II 64-Bit Version          ; 13.0.1 Build 232 06/12/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; Lab2                                            ;
-; Top-level Entity Name              ; Lab2                                            ;
+; Top-level Entity Name              ; register_file                                   ;
 ; Family                             ; Cyclone IV E                                    ;
 ; Total logic elements               ; N/A until Partition Merge                       ;
 ;     Total combinational functions  ; N/A until Partition Merge                       ;
@@ -59,7 +59,7 @@ applicable agreement for further details.
 ; Option                                                                     ; Setting            ; Default Value      ;
 +----------------------------------------------------------------------------+--------------------+--------------------+
 ; Device                                                                     ; EP4CE115F29C7      ;                    ;
-; Top-level entity name                                                      ; Lab2               ; Lab2               ;
+; Top-level entity name                                                      ; register_file      ; Lab2               ;
 ; Family name                                                                ; Cyclone IV E       ; Cyclone IV GX      ;
 ; Use smart compilation                                                      ; Off                ; Off                ;
 ; Enable parallel Assembler and TimeQuest Timing Analyzer during compilation ; On                 ; On                 ;
@@ -154,8 +154,34 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-------------------------------+
 ; Analysis & Synthesis Messages ;
 +-------------------------------+
-<<<<message_ref>>>>
-Z:/CEG3156-Lab-2/db/Lab2.map.qmsg
-<<<</message_ref>>>>
+Info: *******************************************************************
+Info: Running Quartus II 64-Bit Analysis & Synthesis
+    Info: Version 13.0.1 Build 232 06/12/2013 Service Pack 1 SJ Web Edition
+    Info: Processing started: Mon Jun 23 15:19:52 2025
+Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Lab2 -c Lab2
+Warning (20028): Parallel compilation is not licensed and has been disabled
+Info (12021): Found 2 design units, including 1 entities, in source file nbitaddersubtractor.vhd
+    Info (12022): Found design unit 1: nbitaddersubtractor-struc
+    Info (12023): Found entity 1: nbitaddersubtractor
+Info (12021): Found 2 design units, including 1 entities, in source file nbit2to1mux.vhd
+    Info (12022): Found design unit 1: nbit2to1mux-behav
+    Info (12023): Found entity 1: nbit2to1mux
+Info (12021): Found 1 design units, including 1 entities, in source file top.bdf
+    Info (12023): Found entity 1: Top
+Info (12021): Found 2 design units, including 1 entities, in source file sc_datapath.vhd
+    Info (12022): Found design unit 1: sc_datapath-rtl
+    Info (12023): Found entity 1: sc_datapath
+Info (12021): Found 2 design units, including 1 entities, in source file register_file.vhd
+    Info (12022): Found design unit 1: register_file-rtl
+    Info (12023): Found entity 1: register_file
+Info (12021): Found 2 design units, including 1 entities, in source file nbit8to1mux.vhd
+    Info (12022): Found design unit 1: nbit8to1mux-behav
+    Info (12023): Found entity 1: nbit8to1mux
+Error (10482): VHDL error at register_file.vhd(28): object "to_integer" is used but not declared File: Z:/CEG3156-Lab-2/register_file.vhd Line: 28
+Error: Quartus II 64-Bit Analysis & Synthesis was unsuccessful. 1 error, 1 warning
+    Error: Peak virtual memory: 4626 megabytes
+    Error: Processing ended: Mon Jun 23 15:21:41 2025
+    Error: Elapsed time: 00:01:49
+    Error: Total CPU time (on all processors): 00:00:02
 
 

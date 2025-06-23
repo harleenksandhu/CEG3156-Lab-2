@@ -2,6 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 
+library altera_mf;
 library lpm;
 use lpm.lpm_components.all;
 
@@ -16,7 +17,7 @@ architecture rtl of sc_datapath is
 signal greset_b: std_logic;
 signal int_read_reg1, int_read_reg2, int_write_reg: std_logic_vector(4 downto 0);
 signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
-signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_memToReg_out, int_alu_result: std_logic_vector(7 downto 0);
+signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_incPC, int_memToReg_out, int_alu_result, int_aluOpB: std_logic_vector(7 downto 0);
 signal int_instr_out: std_logic_vector(31 downto 0);
 
 component lpm_rom
@@ -96,9 +97,14 @@ end component;
 
 begin 
 
+PC_adder: nbitaddersubtractor
+	generic map(n => 8)
+	port map( x => int_PCOut, y => "00000100", cin => '0', 
+              sum => int_incPC, cout => open);
+
 PC: nbitreg
     generic map(n => 8)
-    port map(reset_b => greset_b, din => int_PCIn, load => IncPC, 
+    port map(reset_b => greset_b, din => int_PCIn, load => '1', 
              clk => GClk, dout => int_PCOut, dout_b => open);
 
 instr_mem : lpm_rom
@@ -120,11 +126,11 @@ regDstMux: nbit2to1mux
               sel1 => RegDst, o => int_write_reg);
 
 reg_file: register_file
-	port(clock => GClk, reset_b => greset_b, 
+	port map(clock => GClk, reset_b => greset_b, 
 		 read_reg1 => int_read_reg1, 
 		 read_reg2 => int_read_reg2, 
 		 write_reg => int_write_reg, 
-		 write_data => int_write_data;
+		 write_data => int_write_data,
 		 read_data1 => int_read_data1, 
 		 read_data2 => int_read_data2);
 
@@ -138,7 +144,7 @@ aluSrcMux: nbit2to1mux
 
 adder: nbitaddersubtractor
 	generic map(n => 8)
-	port map( x => int_PCOut, y => int_instr_out_shft, cin => '0', 
+	port map( x => int_incPC, y => int_instr_out_shft, cin => '0', 
               sum => int_adder_result, cout => open);
 
 
@@ -149,7 +155,7 @@ selBranchMux: nbit2to1mux
 
 
 jumpMux: nbit2to1mux
-    generic map(n => 8);
+    generic map(n => 8)
     port map(i_0 => int_instr_out_shft, i_1 => int_selBranchMuxOut, 
              sel1 => Jump, o => int_PCIn);
 
