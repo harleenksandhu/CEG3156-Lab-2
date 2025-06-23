@@ -1,0 +1,61 @@
+library ieee;
+use ieee.std_logic_1164.all;
+
+entity nbitaddersubtractor is	
+	generic(n: integer:= 8);
+	port(x : in STD_LOGIC_VECTOR(n-1 downto 0); -- First operand
+        y : in STD_LOGIC_VECTOR(n-1 downto 0); -- Second operand
+        opcode : in STD_LOGIC_VECTOR(1 downto 0);  -- 00=ADD, 01=SUB, 10=AND, 11=OR
+        ALUResult : out STD_LOGIC_VECTOR(n-1 downto 0);  -- Result
+        cout : out STD_LOGIC		-- Carry out
+		zero : out STD_LOGIC;   	-- Zero flag
+    );
+	
+end nbitaddersubtractor;
+
+
+architecture struc of nbitaddersubtractor is
+SIGNAL carry, cins, yxor, sum, or_out, and_out: STD_LOGIC_VECTOR(n-1 downto 0);
+
+COMPONENT fulladder IS
+	PORT(x : in STD_LOGIC;
+        y : in STD_LOGIC;
+        cin : in STD_LOGIC;
+        sum : out STD_LOGIC;
+        cout : out STD_LOGIC);
+END COMPONENT;
+
+COMPONENT nbit4to1mux IS
+	GENERIC(n: integer:=8);
+	PORT ( i_0, i_1, i_2, i_3: IN std_logic;
+			 sel1, sel2 : IN std_logic;
+			 o : OUT std_logic);
+END COMPONENT;
+
+BEGIN 
+    cins <= opcode(0);  -- Select cin = '1' for SUB, '0' for ADD
+	yxor <= y XOR cins; -- Invert each bit of y if operation is subtraction
+	
+	--Logic OR and AND operations
+	logic_gen: for i in 0 to n-1 generate
+        and_out(i) <= x(i) and y(i);
+        or_out(i)  <= x(i) or y(i);
+	end generate;
+
+	-- ADD and SUB operations
+	FA0: fulladder PORT MAP(x => x(0), y => yxor(0), cin => cin, sum => sum(0), cout => carry(0)); 
+	addersubtractor: for i in 1 to n-1 generate
+	FAi: fulladder PORT MAP(x => x(i), y => yxor(i), cin => carry(i-1), sum => sum(i), cout => carry(i));
+	end generate;
+
+	-- Mux to select output based on opcode
+	MUX: nbit4to1mux GENERIC MAP(n => 8);
+					 PORT MAP(i_0 => sum, i_1 => sum, i_2 => and_out, i_3 => or_out, sel0 => opcode(0), sel1 => opcode(1));
+
+    -- Carry out only for ADD/SUB
+    cout <= carry(n-1) when opcode = "00" or opcode = "01" else '0';
+
+    -- Zero flag
+    zero <= '1' when ALUResult = (others => '0') else '0';
+
+end struc;
