@@ -4,11 +4,17 @@ use ieee.std_logic_1164.all;
 entity processortop is
     port(ValueSelect: in std_logic_vector(2 downto 0);
         GClk, GReset: in std_logic;
-        MuxOut: out in std_logic_vector(7 downto 0);
+        MuxOut: out std_logic_vector(7 downto 0);
         BranchOut, MemWriteOut, RegWriteOut, ZeroOut: out std_logic);
 end processortop;
 
 architecture rtl of processortop is
+
+    signal int_pcout, int_aluresult, int_readdata1, int_readdata2, int_writedata : std_logic_vector(7 downto 0);
+    signal int_instruction : std_logic_vector(31 downto 0);
+    signal greset_b, int_zero, int_memwrite, int_regdst, int_alusrc, int_branch, int_jump, int_memtoreg, int_memread, int_regwrite : std_logic;
+    signal int_aluop, int_alufunc: std_logic_vector(1 downto 0);
+    signal int_controlinfo : std_logic_vector(7 downto 0);
 
 component nbit8to1mux
     GENERIC(n: integer:=8);
@@ -18,10 +24,10 @@ component nbit8to1mux
 end component;
 
 component sc_datapath
-	port(GClk, GReset, MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: in std_logic,  -- from overall control block
-         ALUFunc: in std_logic_vector(2 downto 0),   -- from ALU control block
-         PCOut, ALUResult, ReadData1, ReadData2, WriteDate: out std_logic_vector(7 downto 0),    -- for MuxOut get control signals from control path
-         InstructionOut: out std_logic_vector(31 downto 0), 
+	port(GClk, GReset, MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: in std_logic;  -- from overall control block
+         ALUFunc: in std_logic_vector(1 downto 0);   -- from ALU control block
+         PCOut, ALUResult, ReadData1, ReadData2, WriteData: out std_logic_vector(7 downto 0);    -- for MuxOut get control signals from control path
+         InstructionOut: out std_logic_vector(31 downto 0); 
          ZeroOut: out std_logic);  
 end component;
 
@@ -39,13 +45,8 @@ end component;
 
 
 begin
-    signal int_pcout, int_aluresult, int_readdata1, int_readdata2, int_writedata : std_logic_vector(7 downto 0);
-    signal int_instruction : std_logic_vector(31 downto 0);
-    signal int_zero, int_memwrite, int_regdst, int_alusrc, int_branch, int_jump, int_memtoreg, int_memread, int_regwrite : std_logic;
-    signal int_aluop, int_alufunc: std_logic_vector(1 downto 0);
-    signal int_controlinfo : std_logic_vector(7 downto 0);
 
-control: maincontrol
+control: main_control
     port map(
         Instruction => int_instruction,
         MemWrite => int_memwrite,
@@ -59,7 +60,7 @@ control: maincontrol
         ALUOp => int_aluop
     );
 
-alucontrol: alucontrol
+alu_control: alucontrol
     port map(
         ALUOp => int_aluop,
         Instruction => int_instruction,
@@ -84,7 +85,7 @@ datapath: sc_datapath
         ALUResult => int_aluresult,
         ReadData1 => int_readdata1,
         ReadData2 => int_readdata2,
-        WriteDate => int_writedata,
+        WriteData => int_writedata,
         InstructionOut => int_instruction,
         ZeroOut => int_zero
     );
@@ -107,7 +108,7 @@ ValueSelectMux: nbit8to1mux
 
 greset_b <= NOT Greset;
 
-InstructionOut <= int_instruction;
+--InstructionOut <= int_instruction;
 BranchOut <= int_branch;
 ZeroOut <= int_zero;
 MemWriteOut <= int_memwrite;

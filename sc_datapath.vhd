@@ -20,7 +20,7 @@ end sc_datapath;
 architecture rtl of sc_datapath is
 signal greset_b, int_alu_zero_out, int_alu_cout, int_selBranch: std_logic;
 signal int_read_reg1, int_read_reg2, int_write_reg: std_logic_vector(4 downto 0);
-signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
+signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
 signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_incPC, int_memToReg_out, int_alu_result, int_aluOpB: std_logic_vector(7 downto 0);
 signal int_instr_out: std_logic_vector(31 downto 0);
 
@@ -126,7 +126,7 @@ instr_mem : lpm_rom
     generic map (
         LPM_WIDTH   => 32,
         LPM_WIDTHAD => 8,
-        LPM_FILE    => "rom_init.mif",
+        LPM_FILE    => "rom2_init.mif",
         LPM_OUTDATA => "UNREGISTERED"
     )
     port map (
@@ -171,7 +171,7 @@ adder: nbitaddersubtractor
 
 selBranchMux: nbit2to1mux
     generic map(n => 8)
-    port map(i_0 => int_PC_out, i_1 => int_adder_result, 
+    port map(i_0 => int_incPC, i_1 => int_adder_result, 
              sel1 => int_selBranch, o => int_selBranchMuxOut);
 
 

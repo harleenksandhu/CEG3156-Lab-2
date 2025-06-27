@@ -2,13 +2,13 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 
-entity maincontrol is
+entity main_control is
     port(Instruction: in std_logic_vector(31 downto 0); 
          MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: out std_logic;
          ALUOp: out std_logic_vector(1 downto 0));
-end maincontrol;
+end main_control;
 
-architecture struc of maincontrol is
+architecture struc of main_control is
 signal Op5, Op4, Op3, Op2, Op1, Op0, Rformat, lw, sw, beq, jump_op: std_logic;
 
 begin
