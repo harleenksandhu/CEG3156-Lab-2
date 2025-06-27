@@ -1,5 +1,6 @@
 library ieee;
 use ieee.std_logic_1164.all;
+use ieee.numeric_std.all;
 
 entity register_file is
 	port(clock, reset_b, regwrite: in std_logic; 
@@ -27,7 +28,7 @@ begin
 
 int_load(to_integer(unsigned(write_reg))) <= regwrite; --load is changed only for the write_reg
 
-reg_gen: for i in 0 to 32 generate
+reg_gen: for i in 0 to 31 generate
 	reg_i: nbitreg
 		generic map(n => 8)
 		port map(reset_b => reset_b, din => write_data, load => int_load(i), 

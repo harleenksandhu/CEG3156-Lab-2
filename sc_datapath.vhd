@@ -8,10 +8,10 @@ use lpm.lpm_components.all;
 
 
 entity sc_datapath is
-	port(GClk, GReset, MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: in std_logic,  -- from overall control block
-         ALUFunc: in std_logic_vector(1 downto 0),   -- from ALU control block
-         PCOut, ALUResult, ReadData1, ReadData2, WriteDate: out std_logic_vector(7 downto 0),    -- for MuxOut get control signals from control path
-         InstructionOut: out std_logic_vector(31 downto 0), 
+	port(GClk, GReset, MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: in std_logic;  -- from overall control block
+         ALUFunc: in std_logic_vector(1 downto 0);   -- from ALU control block
+         PCOut, ALUResult, ReadData1, ReadData2, WriteData: out std_logic_vector(7 downto 0);    -- for MuxOut get control signals from control path
+         InstructionOut: out std_logic_vector(31 downto 0); 
          ZeroOut: out std_logic);  
 
 end sc_datapath;
@@ -20,7 +20,7 @@ end sc_datapath;
 architecture rtl of sc_datapath is
 signal greset_b, int_alu_zero_out, int_alu_cout, int_selBranch: std_logic;
 signal int_read_reg1, int_read_reg2, int_write_reg: std_logic_vector(4 downto 0);
-signal int_read_data1, int_read_data2, int_write_reg, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
+signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
 signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_incPC, int_memToReg_out, int_alu_result, int_aluOpB: std_logic_vector(7 downto 0);
 signal int_instr_out: std_logic_vector(31 downto 0);
 
@@ -30,7 +30,7 @@ component lpm_rom
         LPM_WIDTH     : integer;
         LPM_WIDTHAD   : integer;
         LPM_FILE      : string;
-        LPM_OUTTYPE   : string := "UNREGISTERED"  -- or "REGISTERED"
+        LPM_OUTDATA   : string := "UNREGISTERED"  -- or "REGISTERED"
     );
     port (
         address : in std_logic_vector(LPM_WIDTHAD-1 downto 0);
@@ -46,7 +46,7 @@ component lpm_ram_dq
         LPM_WIDTHAD   : integer;        -- Address width
         LPM_NUMWORDS  : integer := 0;   -- Optional: defaults to 2^LPM_WIDTHAD
         LPM_INDATA    : string  := "REGISTERED";
-        LPM_OUTDATA   : string  := "REGISTERED";
+        LPM_OUTDATA   : string  := "UNREGISTERED";
         LPM_FILE      : string  := "UNUSED";  -- .mif file (optional)
         LPM_TYPE      : string  := "LPM_RAM_DQ";
         LPM_HINT      : string  := "USE_EAB=ON"
@@ -127,7 +127,7 @@ instr_mem : lpm_rom
         LPM_WIDTH   => 32,
         LPM_WIDTHAD => 8,
         LPM_FILE    => "rom_init.mif",
-        LPM_OUTTYPE => "REGISTERED"
+        LPM_OUTDATA => "UNREGISTERED"
     )
     port map (
         address => int_PCOut,
@@ -142,10 +142,10 @@ regDstMux: nbit2to1mux
 
 reg_file: register_file
 	port map(clock => GClk, reset_b => greset_b, 
-         regwrite => RegWrite;
+         regwrite => RegWrite,
 		 read_reg1 => int_read_reg1, 
 		 read_reg2 => int_read_reg2, 
-		 write_reg => int_write_reg; 
+		 write_reg => int_write_reg, 
 		 write_data => int_memToReg_out,
 		 read_data1 => int_read_data1, 
 		 read_data2 => int_read_data2);
@@ -156,10 +156,10 @@ aluSrcMux: nbit2to1mux
              sel1 => AluSrc, o => int_aluOpB);
 
 alu: eightbitalu
-    port map(x => int_read_reg1,
+    port map(x => int_read_data1,
             y => int_aluOpB, 
             opcode => ALUFunc,
-            ALUResult => 
+            ALUResult => int_alu_result,
             cout => int_alu_cout,  -- used no where, for debugging
             zero => int_alu_zero_out);
 
@@ -184,10 +184,10 @@ jumpMux: nbit2to1mux
 
 data_mem : lpm_ram_dq
     generic map (
-        LPM_WIDTH    => 32,
-        LPM_WIDTHAD  => 3,
+        LPM_WIDTH    => 8,
+        LPM_WIDTHAD  => 8,
         LPM_FILE     => "ram_init.mif",
-        LPM_OUTDATA  => "REGISTERED",
+        LPM_OUTDATA  => "UNREGISTERED",
         LPM_INDATA   => "REGISTERED"
     )
     port map (
@@ -206,15 +206,15 @@ memtoRegMux: nbit2to1mux
 greset_b <= NOT Greset;
 int_instr_out_ext <= int_instr_out(5) & int_instr_out(5) & int_instr_out(5 downto 0); --sign extend instructionOut
 int_instr_out_shft <= int_instr_out(5 downto 0) & "00";
-int_selBranch <= int_zero_out AND Branch;
+int_selBranch <= int_alu_zero_out AND Branch;
 
 
 -- Outputs
 ZeroOut <= int_alu_zero_out;
 PCOut <= int_PCOut;
 ALUResult <= int_alu_result;
-ReadData1 <= int_read_reg1;
-ReadData2 <= int_read_reg2;
+ReadData1 <= int_read_data1;
+ReadData2 <= int_read_data2;
 WriteData <= int_write_data;
 InstructionOut <= int_instr_out;
 
