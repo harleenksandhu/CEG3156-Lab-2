@@ -20,7 +20,7 @@ end sc_datapath;
 architecture rtl of sc_datapath is
 signal greset_b, int_alu_zero_out, int_alu_cout, int_selBranch: std_logic;
 signal int_read_reg1, int_read_reg2, int_write_reg: std_logic_vector(4 downto 0);
-signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
+signal int_read_data1, int_read_data2, int_write_reg, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
 signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_incPC, int_memToReg_out, int_alu_result, int_aluOpB: std_logic_vector(7 downto 0);
 signal int_instr_out: std_logic_vector(31 downto 0);
 
@@ -61,7 +61,7 @@ component lpm_ram_dq
 end component;
 
 component register_file
-	port(clock, reset_b: in std_logic; 
+	port(clock, reset_b, regwrite: in std_logic; 
 		  read_reg1, read_reg2, write_reg: in std_logic_vector(4 downto 0); 
 		  write_data: in std_logic_vector(7 downto 0); 
 		  read_data1, read_data2: out std_logic_vector(7 downto 0));
@@ -138,14 +138,15 @@ instr_mem : lpm_rom
 regDstMux: nbit2to1mux
     generic map(n => 5)
     port map (i_0 => int_instr_out(20 downto 16), i_1 => int_instr_out(15 downto 11), 
-              sel1 => RegDst, o => int_write_data);
+              sel1 => RegDst, o => int_write_reg);
 
 reg_file: register_file
 	port map(clock => GClk, reset_b => greset_b, 
+         regwrite => RegWrite;
 		 read_reg1 => int_read_reg1, 
 		 read_reg2 => int_read_reg2, 
-		 write_reg => RegWrite; 
-		 write_data => int_write_data,
+		 write_reg => int_write_reg; 
+		 write_data => int_memToReg_out,
 		 read_data1 => int_read_data1, 
 		 read_data2 => int_read_data2);
 

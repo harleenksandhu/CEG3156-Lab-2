@@ -2,7 +2,7 @@ library ieee;
 use ieee.std_logic_1164.all;
 
 entity register_file is
-	port(clock, reset_b: in std_logic; 
+	port(clock, reset_b, regwrite: in std_logic; 
 		  read_reg1, read_reg2, write_reg: in std_logic_vector(4 downto 0); 
 		  write_data: in std_logic_vector(7 downto 0); 
 		  read_data1, read_data2: out std_logic_vector(7 downto 0));
@@ -25,7 +25,7 @@ end component;
 
 begin
 
-int_load(to_integer(unsigned(write_reg))) <= '1'; --load is high only for write_reg
+int_load(to_integer(unsigned(write_reg))) <= regwrite; --load is changed only for the write_reg
 
 reg_gen: for i in 0 to 32 generate
 	reg_i: nbitreg
