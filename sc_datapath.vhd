@@ -123,13 +123,13 @@ instr_mem : lpm_rom
 regDstMux: nbit2to1mux
     generic map(n => 5)
     port map (i_0 => int_instr_out(20 downto 16), i_1 => int_instr_out(15 downto 11), 
-              sel1 => RegDst, o => int_write_reg);
+              sel1 => RegDst, o => int_write_data);
 
 reg_file: register_file
 	port map(clock => GClk, reset_b => greset_b, 
 		 read_reg1 => int_read_reg1, 
 		 read_reg2 => int_read_reg2, 
-		 write_reg => int_write_reg, 
+		 write_reg => RegWrite; 
 		 write_data => int_write_data,
 		 read_data1 => int_read_data1, 
 		 read_data2 => int_read_data2);
