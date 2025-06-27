@@ -3,3 +3,341 @@ K3
 13
 cModel Technology
 dC:\altera\13.0sp1
+Eeightbitalu
+Z0 w1750705363
+Z1 DPx3 std 6 textio 0 22 5>J:;AW>W0[[dW0I6EN1Q0
+Z2 DPx4 ieee 14 std_logic_1164 0 22 5=aWaoGZSMWIcH0i^f`XF1
+Z3 dC:\CEG3156\Lab2\CEG3156-Lab-2
+Z4 8C:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd
+Z5 FC:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd
+l0
+L4
+V5Zjdlm4V3L^boX[ZoiNia0
+Z6 OV;C;10.1d;51
+32
+Z7 !s108 1750706157.484000
+Z8 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd|
+Z9 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd|
+Z10 o-work work -2002 -explicit -O0
+Z11 tExplicit 1
+!s100 hFh?=R`1F7E7F]cSHc?FJ3
+!i10b 1
+Astruc
+R1
+R2
+DEx4 work 11 eightbitalu 0 22 5Zjdlm4V3L^boX[ZoiNia0
+l34
+L16
+VLoMaQd93f_Q]4AT3ZiYoK0
+!s100 WKA`EkhGX]XE6Jbn8A7jB0
+R6
+32
+R7
+R8
+R9
+R10
+R11
+!i10b 1
+Eenardff_2
+Z12 w1750697891
+R1
+R2
+R3
+Z13 8C:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd
+Z14 FC:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd
+l0
+L31
+VW45mLHZkgINE^UQaXmP5[3
+R6
+32
+Z15 !s108 1750706156.871000
+Z16 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd|
+Z17 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd|
+R10
+R11
+!s100 LM:aJ[Ade62O^TDCQB2jH0
+!i10b 1
+Artl
+R1
+R2
+DEx4 work 9 enardff_2 0 22 W45mLHZkgINE^UQaXmP5[3
+l43
+L40
+V3clzVS[W5TXh[=;E;]4B51
+R6
+32
+R15
+R16
+R17
+R10
+R11
+!s100 n`NKG5gX7V@?eV@4dAU663
+!i10b 1
+Efulladder
+Z18 w1748804644
+R1
+R2
+R3
+Z19 8C:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd
+Z20 FC:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd
+l0
+L4
+V24YPBR8KmNfF3BoISBPoV2
+!s100 3aj]G[RS?eOYgSFkZVnQ<1
+R6
+32
+!i10b 1
+Z21 !s108 1750706157.559000
+Z22 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd|
+Z23 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd|
+R10
+R11
+Abehav
+R1
+R2
+DEx4 work 9 fulladder 0 22 24YPBR8KmNfF3BoISBPoV2
+l15
+L14
+VhUOQ_>3==0KVRg8<F=8[70
+!s100 Sb[I;J@mX58O4;oF@mEiU2
+R6
+32
+!i10b 1
+R21
+R22
+R23
+R10
+R11
+Enbit2to1mux
+R12
+R1
+R2
+R3
+Z24 8C:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd
+Z25 FC:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd
+l0
+L4
+VoGPhMH]O:7moS9n9>KSoi1
+R6
+32
+Z26 !s108 1750706156.945000
+Z27 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd|
+Z28 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd|
+R10
+R11
+!s100 j<a9o16:N11_hW0cJ`9V62
+!i10b 1
+Abehav
+R1
+R2
+DEx4 work 11 nbit2to1mux 0 22 oGPhMH]O:7moS9n9>KSoi1
+l12
+L11
+VJNSVAi8>k`i;jL<I9ZF:<0
+R6
+32
+R26
+R27
+R28
+R10
+R11
+!s100 5V>?64WTFlkKI:^E^<JIW0
+!i10b 1
+Enbit4to1mux
+Z29 w1750702298
+R1
+R2
+R3
+Z30 8C:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd
+Z31 FC:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd
+l0
+L4
+V;nE8>IMMg3HD?g:_C8ogQ3
+R6
+32
+Z32 !s108 1750706157.024000
+Z33 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd|
+Z34 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd|
+R10
+R11
+!s100 @`HBod_6DgAo:?__?eMG23
+!i10b 1
+Abehav
+R1
+R2
+DEx4 work 11 nbit4to1mux 0 22 ;nE8>IMMg3HD?g:_C8ogQ3
+l12
+L11
+V`Z@ebg9GlQQSAA>BgT@;13
+R6
+32
+R32
+R33
+R34
+R10
+R11
+!s100 nz5nfXbN1HbX]EFn3W_5^0
+!i10b 1
+Enbit8to1mux
+R12
+R1
+R2
+R3
+Z35 8C:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd
+Z36 FC:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd
+l0
+L4
+ViEe^I?TK^iH:aG>^lhBaA0
+R6
+32
+Z37 !s108 1750706157.103000
+Z38 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd|
+Z39 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd|
+R10
+R11
+!s100 8_gSbdLEZW5Oh8d>d3[fC3
+!i10b 1
+Abehav
+R1
+R2
+DEx4 work 11 nbit8to1mux 0 22 iEe^I?TK^iH:aG>^lhBaA0
+l12
+L11
+VH2;k=I^PC><k>Xf7CoenB1
+R6
+32
+R37
+R38
+R39
+R10
+R11
+!s100 g4>6c7S4`_@EO^8igUaU;2
+!i10b 1
+Enbitaddersubtractor
+Z40 w1750698376
+R1
+R2
+R3
+Z41 8C:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd
+Z42 FC:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd
+l0
+L4
+VGG`Z@lc=EKeFlaCV3]@g71
+R6
+32
+Z43 !s108 1750706157.183000
+Z44 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd|
+Z45 !s107 C:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd|
+R10
+R11
+!s100 K^jgmhD;Ejh;Sj?kB_FHP3
+!i10b 1
+Astruc
+R1
+R2
+DEx4 work 19 nbitaddersubtractor 0 22 GG`Z@lc=EKeFlaCV3]@g71
+l27
+L16
+VVdPfLT7^:lmRdg?NY5gz<0
+R6
+32
+R43
+R44
+R45
+R10
+R11
+!s100 hnWkGn=a9g6HR4MiCKGmP1
+!i10b 1
+Enbitalu
+w1750704496
+R1
+R2
+R3
+8C:\CEG3156\Lab2\CEG3156-Lab-2\nbitalu.vhd
+FC:\CEG3156\Lab2\CEG3156-Lab-2\nbitalu.vhd
+l0
+L4
+VakI;CF:?KRm65m1MFLYf:2
+R6
+32
+R10
+R11
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:\CEG3156\Lab2\CEG3156-Lab-2\nbitalu.vhd|
+!s107 C:\CEG3156\Lab2\CEG3156-Lab-2\nbitalu.vhd|
+!s100 6N2@]o7QV@AiHV3:AbzX22
+!i10b 1
+!s108 1750704500.598000
+Enbitreg
+R12
+R1
+R2
+R3
+Z46 8C:\CEG3156\Lab2\CEG3156-Lab-2\nbitreg.vhd
+Z47 FC:\CEG3156\Lab2\CEG3156-Lab-2\nbitreg.vhd
+l0
+L4
+VYa4Y:JKC7TnMhUOU`JeZE2
+R6
+32
+Z48 !s108 1750706157.245000
+Z49 !s90 -reportprogress|300|-work|work|-2002|-explicit|C:\CEG3156\Lab2\CEG3156-Lab-2\nbitreg.vhd|
+Z50 !s107 C:\CEG3156\Lab2\CEG3156-Lab-2\nbitreg.vhd|
+R10
+R11
+!s100 M=Hb>^1GOh0`eGMkYI^DR0
+!i10b 1
+Astruc
+R1
+R2
+DEx4 work 7 nbitreg 0 22 Ya4Y:JKC7TnMhUOU`JeZE2
+l24
+L12
+VGVI@93]::bYm:XS=A@0B@2
+R6
+32
+R48
+R49
+R50
+R10
+R11
+!s100 lUaZH_0dTcSgfNPN0L1`42
+!i10b 1
+Eregister_file
+R12
+R1
+R2
+R3
+8C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd
+FC:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd
+l0
+L4
+VXfBHMGa<H@^l7iE5LfEDT3
+R6
+32
+R10
+R11
+!s100 SmPl_aD=Am>GjijY2bAYa3
+!i10b 1
+!s108 1750706157.325000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd|
+!s107 C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd|
+Esc_datapath
+R12
+DPx3 lpm 14 lpm_components 0 22 aHRA3clF>2DcWDhgFTAbM3
+R1
+R2
+R3
+8C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd
+FC:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd
+l0
+L9
+VM3bmOW=`WCee_DE1KGL9B1
+R6
+32
+R10
+R11
+!s100 1Gj2Go5Ea;AhCWAQW^>RV3
+!i10b 1
+!s108 1750706157.391000
+!s90 -reportprogress|300|-work|work|-2002|-explicit|C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd|
+!s107 C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd|

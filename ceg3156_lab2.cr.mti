@@ -1,1 +1,101 @@
+C:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/fulladder.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity fulladder
+-- Compiling architecture behav of fulladder
 
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/nbitreg.vhd {1 {vcom -work work -2002 -explicit {C:\CEG3156\Lab2\CEG3156-Lab-2\nbitreg.vhd}
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nbitreg
+-- Compiling architecture struc of nbitreg
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/nbit8to1mux.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nbit8to1mux
+-- Compiling architecture behav of nbit8to1mux
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/nbit4to1mux.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nbit4to1mux
+-- Compiling architecture behav of nbit4to1mux
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/enARdFF_2.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity enARdFF_2
+-- Compiling architecture rtl of enARdFF_2
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd {0 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Loading package LPM_COMPONENTS
+-- Compiling entity sc_datapath
+-- Compiling architecture rtl of sc_datapath
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(123): near "(": expecting MAP
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(131): Statement cannot be labeled.
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(134): (vcom-1136) Unknown identifier "int_aluOpB".
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(152): (vcom-1035) Formal port "i_0" has OPEN or no actual associated with it.
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(152): (vcom-1035) Formal port "i_1" has OPEN or no actual associated with it.
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(152): (vcom-1035) Formal port "sel1" has OPEN or no actual associated with it.
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(153): near "port": syntax error
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/sc_datapath.vhd(183): VHDL Compiler exiting
+
+} {9.0 12.0 13.0 14.0 15.0 16.0 17.0 18.0 19.0 21.0} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd {0 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity register_file
+-- Compiling architecture rtl of register_file
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd(28): (vcom-1136) Unknown identifier "to_integer".
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd(37): (vcom-1136) Unknown identifier "to_integer".
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd(38): (vcom-1136) Unknown identifier "to_integer".
+
+** Error: C:/CEG3156/Lab2/CEG3156-Lab-2/register_file.vhd(40): VHDL Compiler exiting
+
+} {8.0 9.0 10.0 11.0 12.0 13.0 14.0 15.0} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/nbit2to1mux.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nbit2to1mux
+-- Compiling architecture behav of nbit2to1mux
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/eightbitalu.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity eightbitalu
+-- Compiling architecture struc of eightbitalu
+
+} {} {}} C:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd {1 {vcom -work work -2002 -explicit C:/CEG3156/Lab2/CEG3156-Lab-2/nbitaddersubtractor.vhd
+Model Technology ModelSim ALTERA vcom 10.1d Compiler 2012.11 Nov  2 2012
+-- Loading package STANDARD
+-- Loading package TEXTIO
+-- Loading package std_logic_1164
+-- Compiling entity nbitaddersubtractor
+-- Compiling architecture struc of nbitaddersubtractor
+
+} {} {}}
