@@ -8,17 +8,22 @@ use lpm.lpm_components.all;
 
 
 entity sc_datapath is
-	port(GClk, GReset, MemWrite, RegDst, ALUSrc, SelBranch, Jump, IncPC, MemtoReg: in std_logic);
+	port(GClk, GReset, MemWrite, RegDst, ALUSrc, Branch, Jump, MemtoReg, MemRead, RegWrite: in std_logic,  -- from overall control block
+         ALUFunc: in std_logic_vector(1 downto 0),   -- from ALU control block
+         PCOut, ALUResult, ReadData1, ReadData2, WriteDate: out std_logic_vector(7 downto 0),    -- for MuxOut get control signals from control path
+         InstructionOut: out std_logic_vector(31 downto 0), 
+         ZeroOut: out std_logic);  
 
 end sc_datapath;
 
 
 architecture rtl of sc_datapath is
-signal greset_b: std_logic;
+signal greset_b, int_alu_zero_out, int_alu_cout, int_selBranch: std_logic;
 signal int_read_reg1, int_read_reg2, int_write_reg: std_logic_vector(4 downto 0);
 signal int_read_data1, int_read_data2, int_write_data, int_instr_out_ext, int_PC_out, int_adder_result, int_read_data_mem: std_logic_vector(7 downto 0);
 signal int_selBranchMuxOut, int_instr_out_shft, int_PCIn, int_PCOut, int_incPC, int_memToReg_out, int_alu_result, int_aluOpB: std_logic_vector(7 downto 0);
 signal int_instr_out: std_logic_vector(31 downto 0);
+
 
 component lpm_rom
     generic (
@@ -94,6 +99,16 @@ component nbitaddersubtractor
     );
 end component;
 
+component eightbitalu
+	port(x : in STD_LOGIC_VECTOR(7 downto 0); -- First operand
+        y : in STD_LOGIC_VECTOR(7 downto 0); -- Second operand
+        opcode : in STD_LOGIC_VECTOR(1 downto 0);  -- 00=ADD, 01=SUB, 10=AND, 11=OR
+        ALUResult : out STD_LOGIC_VECTOR(7 downto 0);  -- Result
+        cout : out STD_LOGIC;		-- Carry out
+		zero : out STD_LOGIC   	-- Zero flag
+    );
+end component;
+
 
 begin 
 
@@ -139,8 +154,13 @@ aluSrcMux: nbit2to1mux
     port map(i_0 => int_read_data2, i_1 => int_instr_out_ext, 
              sel1 => AluSrc, o => int_aluOpB);
 
---add 8-bit ALU here
-
+alu: eightbitalu
+    port map(x => int_read_reg1,
+            y => int_aluOpB, 
+            opcode => ALUFunc,
+            ALUResult => 
+            cout => int_alu_cout,  -- used no where, for debugging
+            zero => int_alu_zero_out);
 
 adder: nbitaddersubtractor
 	generic map(n => 8)
@@ -151,7 +171,7 @@ adder: nbitaddersubtractor
 selBranchMux: nbit2to1mux
     generic map(n => 8)
     port map(i_0 => int_PC_out, i_1 => int_adder_result, 
-             sel1 => SelBranch, o => int_selBranchMuxOut);
+             sel1 => int_selBranch, o => int_selBranchMuxOut);
 
 
 jumpMux: nbit2to1mux
@@ -185,6 +205,17 @@ memtoRegMux: nbit2to1mux
 greset_b <= NOT Greset;
 int_instr_out_ext <= int_instr_out(5) & int_instr_out(5) & int_instr_out(5 downto 0); --sign extend instructionOut
 int_instr_out_shft <= int_instr_out(5 downto 0) & "00";
+int_selBranch <= int_zero_out AND Branch;
+
+
+-- Outputs
+ZeroOut <= int_alu_zero_out;
+PCOut <= int_PCOut;
+ALUResult <= int_alu_result;
+ReadData1 <= int_read_reg1;
+ReadData2 <= int_read_reg2;
+WriteData <= int_write_data;
+InstructionOut <= int_instr_out;
 
 end rtl;
 
