@@ -177,7 +177,7 @@ selBranchMux: nbit2to1mux
 
 jumpMux: nbit2to1mux
     generic map(n => 8)
-    port map(i_0 => int_instr_out_shft, i_1 => int_selBranchMuxOut, 
+    port map(i_0 => int_selBranchMuxOut, i_1 => int_instr_out_shft, 
              sel1 => Jump, o => int_PCIn);
 
 
@@ -215,7 +215,7 @@ PCOut <= int_PCOut;
 ALUResult <= int_alu_result;
 ReadData1 <= int_read_data1;
 ReadData2 <= int_read_data2;
-WriteData <= int_write_data;
+WriteData <= int_memToReg_out;
 InstructionOut <= int_instr_out;
 
 end rtl;

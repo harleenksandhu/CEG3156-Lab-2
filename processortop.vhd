@@ -71,7 +71,7 @@ alu_control: alucontrol
 datapath: sc_datapath
     port map(
         GClk => GClk,  
-        GReset => greset_b,  
+        GReset => GReset,  
         MemWrite => int_memwrite,
         RegDst => int_regdst,
         ALUSrc => int_alusrc,
@@ -106,7 +106,6 @@ ValueSelectMux: nbit8to1mux
         o => MuxOut
     );
 
-greset_b <= NOT Greset;
 
 --InstructionOut <= int_instruction;
 BranchOut <= int_branch;
